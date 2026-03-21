@@ -71,4 +71,9 @@ def get_args():
 
     args = parser.parse_args()
 
+    loss_names = [item.strip() for item in args.loss_names.split('+') if item.strip()]
+    if 'mlm' in loss_names and not args.MLM:
+        print("`mlm` is included in `loss_names`, enabling `--MLM` automatically.")
+        args.MLM = True
+
     return args
