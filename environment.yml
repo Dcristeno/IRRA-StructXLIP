@@ -1,0 +1,18 @@
+name: irra
+channels:
+  - pytorch          # 必须放第一！优先级高
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - cudatoolkit=11.1   # ← 关键：PyTorch 1.9.0 官方仅支持 11.1
+  - pytorch=1.9.0
+  - torchvision=0.10.0
+  - prettytable
+  - easydict
+  - numpy
+  - opencv
+  - pandas
+  - tqdm
+  - scikit-learn
+  - matplotlib

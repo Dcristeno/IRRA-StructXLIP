@@ -1,0 +1,45 @@
+en:
+  colors:
+    - black
+    - white
+    - red
+    - blue
+    - green
+    - yellow
+    - gray
+    - grey
+    - brown
+    - pink
+    - purple
+    - orange
+    - tan
+    - gold
+    - silver
+    - beige
+    - burgundy
+    - maroon
+    - olive
+  materials:
+    - cotton
+    - denim
+    - leather
+    - silk
+    - wool
+    - linen
+    - polyester
+    - fabric
+    - metal
+    - wooden
+  background:
+    - street
+    - road
+    - sidewalk
+    - building
+    - grass
+    - tree
+    - sky
+    - wall
+    - floor
+    - background
+    - mall
+    - camera
