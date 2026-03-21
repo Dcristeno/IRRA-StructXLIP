@@ -74,6 +74,16 @@ def get_args_structxlip():
     parser.add_argument("--struct_min_words", type=int, default=3)
     parser.add_argument("--struct_lexicon_file", default="misc/structxlip_lexicon.yaml")
 
+    parser.add_argument("--use_swanlab", default=False, action="store_true")
+    parser.add_argument("--swanlab_project", default="IRRA-StructXLIP")
+    parser.add_argument("--swanlab_workspace", default="Dcristen")
+    parser.add_argument("--swanlab_experiment_name", default="")
+    parser.add_argument("--swanlab_description", default="")
+    parser.add_argument("--swanlab_mode", default="cloud", choices=["cloud", "offline", "local", "disabled"])
+    parser.add_argument("--swanlab_api_key", default="")
+    parser.add_argument("--swanlab_save_key", default=False, action="store_true")
+    parser.add_argument("--swanlab_tags", nargs="*", default=["irra", "structxlip"])
+
     args = parser.parse_args()
 
     loss_names = [item.strip() for item in args.loss_names.split("+") if item.strip()]

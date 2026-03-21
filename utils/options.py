@@ -69,6 +69,17 @@ def get_args():
     parser.add_argument("--num_workers", type=int, default=8)
     parser.add_argument("--test", dest='training', default=True, action='store_false')
 
+    ######################## swanlab ########################
+    parser.add_argument("--use_swanlab", default=False, action="store_true")
+    parser.add_argument("--swanlab_project", default="IRRA-StructXLIP")
+    parser.add_argument("--swanlab_workspace", default="Dcristen")
+    parser.add_argument("--swanlab_experiment_name", default="")
+    parser.add_argument("--swanlab_description", default="")
+    parser.add_argument("--swanlab_mode", default="cloud", choices=["cloud", "offline", "local", "disabled"])
+    parser.add_argument("--swanlab_api_key", default="")
+    parser.add_argument("--swanlab_save_key", default=False, action="store_true")
+    parser.add_argument("--swanlab_tags", nargs="*", default=["irra"])
+
     args = parser.parse_args()
 
     loss_names = [item.strip() for item in args.loss_names.split('+') if item.strip()]

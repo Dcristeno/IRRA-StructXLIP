@@ -16,3 +16,6 @@ dependencies:
   - tqdm
   - scikit-learn
   - matplotlib
+  - pip
+  - pip:
+      - swanlab

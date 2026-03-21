@@ -44,6 +44,7 @@ class Evaluator():
         self.img_loader = img_loader # gallery
         self.txt_loader = txt_loader # query
         self.logger = logging.getLogger("IRRA.eval")
+        self.latest_result = {}
 
     def _compute_embedding(self, model):
         model = model.eval()
@@ -97,5 +98,20 @@ class Evaluator():
         table.custom_format["mAP"] = lambda f, v: f"{v:.3f}"
         table.custom_format["mINP"] = lambda f, v: f"{v:.3f}"
         self.logger.info('\n' + str(table))
+        self.latest_result = {
+            "t2i_R1": float(t2i_cmc[0]),
+            "t2i_R5": float(t2i_cmc[4]),
+            "t2i_R10": float(t2i_cmc[9]),
+            "t2i_mAP": float(t2i_mAP),
+            "t2i_mINP": float(t2i_mINP),
+        }
+        if i2t_metric:
+            self.latest_result.update({
+                "i2t_R1": float(i2t_cmc[0]),
+                "i2t_R5": float(i2t_cmc[4]),
+                "i2t_R10": float(i2t_cmc[9]),
+                "i2t_mAP": float(i2t_mAP),
+                "i2t_mINP": float(i2t_mINP),
+            })
         
         return t2i_cmc[0]

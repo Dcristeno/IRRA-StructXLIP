@@ -16,6 +16,7 @@ from utils.iotools import save_train_configs
 from utils.logger import setup_logger
 from utils.metrics import Evaluator
 from utils.options_structxlip import get_args_structxlip
+from utils.swanlab_logger import build_swanlab_logger
 
 
 def set_seed(seed=0):
@@ -48,6 +49,7 @@ if __name__ == "__main__":
     logger.info("Using {} GPUs".format(num_gpus))
     logger.info(str(args).replace(",", "\n"))
     save_train_configs(args.output_dir, args)
+    swanlab_logger = build_swanlab_logger(args)
 
     train_loader, val_img_loader, val_txt_loader, num_classes = build_dataloader_structxlip(args)
     model = build_model_structxlip(args, num_classes)
@@ -74,4 +76,17 @@ if __name__ == "__main__":
         checkpoint = checkpointer.resume(args.resume_ckpt_file)
         start_epoch = checkpoint["epoch"]
 
-    do_train_structxlip(start_epoch, args, model, train_loader, evaluator, optimizer, scheduler, checkpointer)
+    try:
+        do_train_structxlip(
+            start_epoch,
+            args,
+            model,
+            train_loader,
+            evaluator,
+            optimizer,
+            scheduler,
+            checkpointer,
+            swanlab_logger=swanlab_logger,
+        )
+    finally:
+        swanlab_logger.finish()
