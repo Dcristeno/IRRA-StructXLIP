@@ -1,0 +1,51 @@
+colors:
+  black:
+    - black
+    - dark black
+  white:
+    - white
+    - off white
+    - ivory
+    - cream
+  red:
+    - red
+    - maroon
+    - burgundy
+    - wine red
+  blue:
+    - blue
+    - navy
+    - navy blue
+    - light blue
+    - sky blue
+    - cyan
+  green:
+    - green
+    - olive
+    - olive green
+    - mint
+  yellow:
+    - yellow
+    - golden
+    - gold
+  brown:
+    - brown
+    - tan
+    - khaki
+    - beige
+    - camel
+  gray:
+    - gray
+    - grey
+    - silver
+    - charcoal
+  purple:
+    - purple
+    - violet
+    - lavender
+  pink:
+    - pink
+    - rose
+  orange:
+    - orange
+    - coral
