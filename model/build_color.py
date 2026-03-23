@@ -108,8 +108,10 @@ class IRRAColorAux(nn.Module):
             zero = image_feats.new_tensor(0.0)
             return zero, zero, zero
 
-        image_logits = self.image_color_head(image_feats[valid])
-        text_logits = self.text_color_head(text_feats[valid])
+        # The CLIP conversion utility casts linear layers to fp16, so the
+        # auxiliary color heads need fp16 inputs just like the ID classifier.
+        image_logits = self.image_color_head(image_feats[valid].half()).float()
+        text_logits = self.text_color_head(text_feats[valid].half()).float()
         labels = color_labels[valid]
 
         image_loss = F.binary_cross_entropy_with_logits(image_logits, labels)
