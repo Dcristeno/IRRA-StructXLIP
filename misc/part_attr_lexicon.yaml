@@ -1,0 +1,29 @@
+parts:
+  upper:
+    - shirt
+    - tshirt
+    - t-shirt
+    - top
+    - jacket
+    - coat
+    - hoodie
+    - sweater
+    - vest
+    - blazer
+    - uniform
+  lower:
+    - pants
+    - trousers
+    - jeans
+    - shorts
+    - skirt
+    - leggings
+  shoes:
+    - shoes
+    - shoe
+    - sneakers
+    - sneaker
+    - boots
+    - boot
+    - sandals
+    - sandal
