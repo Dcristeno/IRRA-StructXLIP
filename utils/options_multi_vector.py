@@ -68,14 +68,14 @@ def get_args_multi_vector():
     parser.add_argument("--eval_local_chunk_size", type=int, default=256)
 
     parser.add_argument("--use_swanlab", default=False, action="store_true")
-    parser.add_argument("--swanlab_project", default="IRRA-MultiVector")
+    parser.add_argument("--swanlab_project", default="IRRA-MultiVector-LateInteraction")
     parser.add_argument("--swanlab_workspace", default="Dcristen")
     parser.add_argument("--swanlab_experiment_name", default="")
     parser.add_argument("--swanlab_description", default="")
     parser.add_argument("--swanlab_mode", default="cloud", choices=["cloud", "offline", "local", "disabled"])
     parser.add_argument("--swanlab_api_key", default="")
     parser.add_argument("--swanlab_save_key", default=False, action="store_true")
-    parser.add_argument("--swanlab_tags", nargs="*", default=["irra", "multi-vector"])
+    parser.add_argument("--swanlab_tags", nargs="*", default=["irra", "multi-vector", "late-interaction", "local-dominant"])
 
     args = parser.parse_args()
 

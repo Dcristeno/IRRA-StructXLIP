@@ -14,6 +14,12 @@ Entry point:
 python train_multi_vector.py --name multi-vector-li
 ```
 
+With SwanLab logging:
+
+```bash
+bash shell/train_multi_vector.sh
+```
+
 Recommended first sweep:
 
 ```bash
