@@ -15,6 +15,7 @@ from model import build_model
 from utils.metrics import Evaluator
 from utils.options import get_args
 from utils.comm import get_rank, synchronize
+from utils.swanlab_logger import build_swanlab_logger
 
 
 def set_seed(seed=0):
@@ -47,6 +48,7 @@ if __name__ == '__main__':
     logger.info("Using {} GPUs".format(num_gpus))
     logger.info(str(args).replace(',', '\n'))
     save_train_configs(args.output_dir, args)
+    swanlab_logger = build_swanlab_logger(args)
 
     # get image-text pair datasets dataloader
     train_loader, val_img_loader, val_txt_loader, num_classes = build_dataloader(args)
@@ -74,4 +76,7 @@ if __name__ == '__main__':
         checkpoint = checkpointer.resume(args.resume_ckpt_file)
         start_epoch = checkpoint['epoch']
 
-    do_train(start_epoch, args, model, train_loader, evaluator, optimizer, scheduler, checkpointer)
+    try:
+        do_train(start_epoch, args, model, train_loader, evaluator, optimizer, scheduler, checkpointer, swanlab_logger=swanlab_logger)
+    finally:
+        swanlab_logger.finish()
