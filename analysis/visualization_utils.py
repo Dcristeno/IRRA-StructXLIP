@@ -65,6 +65,14 @@ def candidate_terms_from_caption(caption: str, max_terms: int = 6) -> List[str]:
 
 def overlay_heatmap(base_image: np.ndarray, heatmap: np.ndarray, alpha: float = 0.55, cmap: str = "jet") -> np.ndarray:
     heatmap = normalize_heatmap(heatmap)
+    if heatmap.shape[:2] != base_image.shape[:2]:
+        heatmap = np.asarray(
+            Image.fromarray((heatmap * 255).astype(np.uint8)).resize(
+                (base_image.shape[1], base_image.shape[0]),
+                resample=Image.BILINEAR,
+            ),
+            dtype=np.float32,
+        ) / 255.0
     colored = plt.get_cmap(cmap)(heatmap)[..., :3]
     blended = (1.0 - alpha) * base_image + alpha * colored
     return np.clip(blended, 0.0, 1.0)
