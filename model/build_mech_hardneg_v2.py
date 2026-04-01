@@ -98,6 +98,14 @@ class IRRAMechHardNegV2(nn.Module):
         x = self.ln_post(x)
         return x
 
+    def encode_image(self, image):
+        x = self.base_model.encode_image(image)
+        return x[:, 0, :].float()
+
+    def encode_text(self, text):
+        x = self.base_model.encode_text(text)
+        return x[torch.arange(x.shape[0]), text.argmax(dim=-1)].float()
+
     def _compute_dehn_v2_loss(self, image_feats, text_feats, caption_ids, pids):
         text_global = F.normalize(
             text_feats[torch.arange(text_feats.shape[0]), caption_ids.argmax(dim=-1)].float(),
