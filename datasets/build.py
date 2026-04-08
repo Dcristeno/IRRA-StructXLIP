@@ -13,8 +13,9 @@ from .bases import ImageDataset, TextDataset, ImageTextDataset, ImageTextMLMData
 from .cuhkpedes import CUHKPEDES
 from .icfgpedes import ICFGPEDES
 from .rstpreid import RSTPReid
+from .agmixpr import AGMixPR
 
-__factory = {'CUHK-PEDES': CUHKPEDES, 'ICFG-PEDES': ICFGPEDES, 'RSTPReid': RSTPReid}
+__factory = {'CUHK-PEDES': CUHKPEDES, 'ICFG-PEDES': ICFGPEDES, 'RSTPReid': RSTPReid, 'AGMix-PR': AGMixPR}
 
 
 def build_transforms(img_size=(384, 128), aug=False, is_train=True):
